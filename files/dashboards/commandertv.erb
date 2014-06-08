@@ -1,0 +1,50 @@
+<script type='text/javascript'>
+$(function() {
+Dashing.gridsterLayout('[{"col":2,"row":2,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":1,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":3,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":1,"size_y":1},{"col":4,"row":2,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":1,"size_y":2},{"col":2,"row":3,"size_x":2,"size_y":1}]')
+Dashing.widget_base_dimensions = [370, 340]
+  Dashing.numColumns = 4
+});
+</script>
+
+<% content_for :title do %>1080p dashboard<% end %>
+
+<div class="gridster">
+  <ul>
+
+   <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <div data-id="buzzwords" data-view="Meter" data-title="JIRAs In Progress in Current Sprint - Seal Team 6" data-min="0" data-max="50"></div>
+  </li>
+  
+  <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Clock"></div>
+      <i class="icon-time icon-background"></i>
+    </li>
+	
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/ElectricCloud_Logo.jpg" style="background-color:#ffffff;"></div>
+    </li>
+	
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-addclass-redb="RedBuild" data-addclass-greenb="GreenBuild" data-title="Latest build" data-text="This is your shiny new 1080p dashboard."></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="preflightsRun" data-view="Text" data-title="# of preflights run by the team in the last 24 hours" data-text="These are the number of preflights." ></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="percentageOfGreenBuilds" data-view="Meter" data-moreinfo="The goal is >80%" data-title="Green Build % (last 24 hours)" data-min="0" data-max="100"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
+      <div data-id="api.all.cluster" data-view="Graph" data-title="Completed Jobs (last 60 minutes)" style="background-color:#81a130;"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#4da2d0;" data-moreinfo="Tweets tagged with #does2014"></div>
+      <i class="icon-twitter icon-background"></i>
+    </li>
+
+  </ul>
+  <!-- <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center> -->
+</div>
