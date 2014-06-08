@@ -12,6 +12,26 @@ If you do not want to use Vagrant, create your own machine and follow the direct
 in the script part of the Vagrantfile.
 /vagrant is a specific mount point on the guest OS to access the local host directory.
 
+Once your machine is up and configured, you need to modify the follogin files:
+  /opt/dashing/lib/credentials to enter your information to connect to COmmander, Jira and Twitter
+  /opt/dashing/jobs/commander_sessions.rb to change the name of the project and procedure you want to monitor
+
+The last build widget data is pushed from commander. The step looks like:
+
+if [ "$[/myJob/latestBuildOutcome]" = "success" ]
+then
+    outcome="Green" 
+    curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Latest Build - $[/myJob/latestBuild] ran for '$[/myJob/latestBuildElapsedTime]' hours, and was '$outcome' woo! ", "isGreen": 3}' \http://192.168.56.25:3030/widgets/welcome 
+else
+    outcome="Red" 
+    curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "$[/myJob/latestBuild] ran for $[/myJob/latestBuildElapsedTime] hours, and was '$outcome'! ", "isRed": 3}' \http://192.168.56.25:3030/widgets/welcome
+fi
+
+The properties are set in a previous step where you can define a simple findObjects('job').
+Replace the IP address by the one assocaited to your VM (if you have changed the VagrantFile)
+
+I'll publish a full example in the EC-Dashing-Widget project later on
+
 The goal is to add additional widgets specific to Commander over time.
 
 Contact the authors:
