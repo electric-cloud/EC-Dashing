@@ -2,18 +2,18 @@ This project contains a Dashing Dashboard to display data monitoring the status 
 
 It uses Vagrant and VirtualBox to spin a VM with all the required parts.
 
-simply invoke  the following command to create the and provision the VM:
+simply invoke  the following command to create the and provision the VM:  
 	`vagrant up`
 
-You can then ssh in the VM by using:
+You can then ssh in the VM by using:  
 	`vagrant ssh`
 
 If you do not want to use Vagrant, create your own machine and follow the directions 
 in the script part of the Vagrantfile.
 /vagrant is a specific mount point on the guest OS to access the local host directory.
 
-Once your machine is up and configured, you need to modify the following files:
-  /opt/dashing/lib/credentials to enter your information to connect to COmmander, Jira and Twitter
+Once your machine is up and configured, you need to modify the following files:  
+  /opt/dashing/lib/credentials to enter your information to connect to ElectricCommander, Jira and Twitter
   /opt/dashing/jobs/commander_sessions.rb to change the name of the project and procedure you want to monitor
 
 The last build widget data is pushed from commander. The step looks like:
@@ -30,16 +30,16 @@ fi
 ```
 
 The properties are set in a previous step where you can define a simple findObjects('job').
-Replace the IP address by the one assocaited to your VM (if you have changed the VagrantFile)
+Replace the IP address by the one associated to your VM (if you have changed the VagrantFile)
 
 I'll publish a full example in the EC-Dashing-Widget project later on
 
 The goal is to add additional widgets specific to Commander over time.
 
-Contact the authors:
-	Nikhil Vaze
-	Siddhartha Gupta
-	Laurent Rochette (lrochette@electric-cloud.com)
+Contact the authors:  
+	Nikhil Vaze  
+	Siddhartha Gupta  
+	Laurent Rochette (lrochette@electric-cloud.com)  
 
 Legal Jumbo
  
