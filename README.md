@@ -3,16 +3,16 @@ This project contains a Dashing Dashboard to display data monitoring the status 
 It uses Vagrant and VirtualBox to spin a VM with all the required parts.
 
 simply invoke  the following command to create the and provision the VM:
-	vagrant up
+	`vagrant up`
 
 You can then ssh in the VM by using:
-	vagrant ssh
+	`vagrant ssh`
 
 If you do not want to use Vagrant, create your own machine and follow the directions 
 in the script part of the Vagrantfile.
 /vagrant is a specific mount point on the guest OS to access the local host directory.
 
-Once your machine is up and configured, you need to modify the follogin files:
+Once your machine is up and configured, you need to modify the following files:
   /opt/dashing/lib/credentials to enter your information to connect to COmmander, Jira and Twitter
   /opt/dashing/jobs/commander_sessions.rb to change the name of the project and procedure you want to monitor
 
