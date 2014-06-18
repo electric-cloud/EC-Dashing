@@ -1,14 +1,31 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-$script = <<SCRIPT
-set -x
+ $script = <<SCRIPT
+    set -x
 echo I am provisioning...
 date > /etc/vagrant_provisioned_at
 apt-get update
-echo "America/Los_Angeles" | sudo tee /etc/timezone
-ntpdate -u http://pool.ntp.org
-dpkg-reconfigure --frontend noninteractive tzdata
+    echo "America/Los_Angeles" | sudo tee /etc/timezone
+    ntpdate -u http://pool.ntp.org
+    dpkg-reconfigure --frontend noninteractive tzdata
+#    debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password commander'
+#    debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password commander'
+#    apt-get -y install mysql-server
+#    mysqladmin -uroot -pcommander create commander
+#    mysqladmin -uroot -pcommander create commander5
+#    mysql -u root -pcommander -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'commander' WITH GRANT OPTION;"
+#    sed -i.bak -e 's/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
+#    restart mysql
+#    /vagrant/ElectricCommander-* --mode silent --installServer --unixServerUser vagrant \
+  --unixServerGroup vagrant --installAgent --unixAgentUser vagrant --unixAgentGroup vagrant --installWeb --installRepository --installDatabase
+#    export PATH=$PATH:/opt/electriccloud/electriccommander/jre/bin
+#    export JAVA_HOME=/opt/electriccloud/electriccommander/jre/bin
+#    cp /vagrant/mysql-connector-java.jar /opt/electriccloud/electriccommander/server/lib
+#    /opt/electriccloud/electriccommander/bin/ectool setDatabaseConfiguration --databaseType mysql \
+#  --databaseName commander --userName root --password commander --hostName localhost
+#/etc/init.d/commanderServer restart
+#    echo 'export PATH=$PATH:/opt/electriccloud/electriccommander/bin:/opt/electriccloud/electriccommander/jre/bin' > /home/vagrant/.bash_aliases
 
 # Install Node.js
 apt-get install python-software-properties python g++ make -y
@@ -40,9 +57,15 @@ cp -R /vagrant/files/public /opt/dashing/
 cp -R /vagrant/files/jobs /opt/dashing/
 cp -R /vagrant/files/lib /opt/dashing/
 
-
+cd /opt/dashing
 bundle
-dashing start
+
+# Setup Dashing init script
+cp /vagrant/files/dashboard_init.sh /etc/init.d/dashboard
+chmod 755 /etc/init.d/dashboard
+update-rc.d dashboard defaults
+/etc/init.d/dashboard start
+
 
 SCRIPT
 
