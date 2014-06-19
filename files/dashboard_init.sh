@@ -28,27 +28,36 @@ NAME=dashing
 DASHING_DIR=/opt/dashing
 PIDFILE="$DASHING_DIR/$NAME.pid"
 DAEMON=/opt/vagrant_ruby/bin/dashing
-DAEMON_OPTS="start -d -P $PIDFILE"
+DAEMON_OPTS="-d -P $PIDFILE"
 GEM_HOME=/usr/local/rvm/gems/ruby-2.1.2
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+#store dashing pid in $PID, else empty string
+if [ -f $PIDFILE ]; then
+PID=$(<"$PIDFILE")
+else echo ""
+fi
 
 case "$1" in
   start)
-    echo -n "Starting daemon: "$NAME
-    start-stop-daemon --start --quiet --chdir $DASHING_DIR --exec $DAEMON -- $DAEMON_OPTS
-    echo "."
+    echo "Starting daemon: "$NAME
+    cd $DASHING_DIR ; $DAEMON start $DAEMON_OPTS && sleep 2s
+    echo "started"
   ;;
   stop)
-    echo -n "Stopping daemon: "$NAME
-    start-stop-daemon --stop --quiet --signal 9 --oknodo --pidfile $PIDFILE
-    echo "."
+    echo "Stopping daemon: "$NAME
+    if [ -f $PIDFILE ]; then
+      kill $PID && sleep 2s && echo "Killed Dashing"
+    fi
   ;;
   restart)
-    echo -n "Restarting daemon: "$NAME
-    start-stop-daemon --stop --quiet --signal 9 --oknodo --retry 30 --pidfile $PIDFILE
-    start-stop-daemon --start --quiet --chdir $DASHING_DIR --exec $DAEMON -- $DAEMON_OPTS
-    echo "."
+    echo "Stopping daemon: "$NAME
+    if [ -f $PIDFILE ]; then
+      kill $PID && sleep 3s && echo "Killed Dashing"
+    fi
+    echo "Starting daemon: "$NAME && sleep 2s
+    cd $DASHING_DIR ; $DAEMON start $DAEMON_OPTS && sleep 2s
+    echo "started"
+
   ;;
   logs)
     echo "See the logs of the Dashing."
