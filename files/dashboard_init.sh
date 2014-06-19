@@ -52,7 +52,7 @@ case "$1" in
   ;;
   logs)
     echo "See the logs of the Dashing."
-    tail -f $DASHING_DIR'log/thin.log'
+    tail -f $DASHING_DIR/log/thin.log
   ;;
 
   *)
