@@ -25,7 +25,7 @@ Dashing.widget_base_dimensions = [370, 340]
     </li>
 	
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-addclass-redb="RedBuild" data-addclass-greenb="GreenBuild" data-title="Latest build" data-text="This is your shiny new 1080p dashboard."></div>
+      <div data-id="lastBuild" data-view="Text" data-addclass-redb="RedBuild" data-addclass-greenb="GreenBuild" data-title="Latest build" data-text="This is your shiny new 1080p dashboard."></div>
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
@@ -41,10 +41,16 @@ Dashing.widget_base_dimensions = [370, 340]
     </li>
 
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="jobTrend" data-view="Trend" data-title="Builds per day"></div>
+    </li>
+
+<!--
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="twitter_mentions" data-view="Comments" style="background-color:#4da2d0;" data-moreinfo="Tweets tagged with #does2014"></div>
       <i class="icon-twitter icon-background"></i>
     </li>
+-->
 
   </ul>
-  <!-- <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center> -->
+  <!-- <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/lastBuild</div></center> -->
 </div>
