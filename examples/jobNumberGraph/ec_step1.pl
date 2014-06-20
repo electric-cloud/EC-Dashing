@@ -65,15 +65,15 @@ my $counter=0;
 # Display days of week starting a while ago
 for (my $day=$dayLimit-1 ; $day>= 0; $day --) {
   my $dayIndex=$days[$day]{yday};
-  $pointString.=sprintf('%s{"x": "%s", "y":"%d"}', $counter ? ",\n" : "", 
-                        $days[$day]{midnight}, $dayTotal{$dayIndex}{'success'});
+  $pointString.=sprintf('%s{"x": %d, "y":%d}', $counter ? ",\n" : "", 
+            $days[$day]{midnight}, $dayTotal{$dayIndex}{'success'});
   $counter=1;
 }
 $pointString .= "]";
 
 print $pointString . "\n";
   
-system("curl -d '{\"auth_token\": \"YOUR_AUTH_TOKEN\", $pointString}' http://192.168.56.25:3030/widgets/jobTrend;");
+system("curl -d '{\"auth_token\": \"YOUR_AUTH_TOKEN\", \"moreinfo\": \"Total: $nbJobs\", $pointString}' http://192.168.56.25:3030/widgets/jobTrend;");
 
 
 
@@ -105,7 +105,7 @@ sub calculateEpoch {
     my $dt=DateTime->now(time_zone=>'local')->subtract(days => $nbDays)->truncate(to => 'day');
     #printf("  local midnight time: %s", $dt);
     $dt->set_time_zone("UTC");
-    return $dt->epoch()*1000;
+    return $dt->epoch();
 }
 
 #############################################################################
@@ -136,4 +136,3 @@ sub getDayOfYear {
     my $yday=$dt->day_of_year();
     return $yday;
 }
-
