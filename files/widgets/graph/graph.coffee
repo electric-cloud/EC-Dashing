@@ -15,18 +15,21 @@ class Dashing.Graph extends Dashing.Widget
       element: @node
       width: width
       height: height
+      min: @get("min") || undefined
+      max: @get("max") || undefined
       renderer: @get("graphtype")
       series: [
         {
-        color: "#fff",
+        color: @get('color') || "#fff",
         data: [{x:0, y:0}]
         }
       ]
     )
 
     @graph.series[0].data = @get('points') if @get('points')
-
-    x_axis = new Rickshaw.Graph.Axis.Time(graph: @graph)
+    
+    if @get('showx')
+        x_axis = new Rickshaw.Graph.Axis.Time(graph: @graph)
     y_axis = new Rickshaw.Graph.Axis.Y(graph: @graph, tickFormat: Rickshaw.Fixtures.Number.formatKMBT)
     @graph.render()
 
