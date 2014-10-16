@@ -1,11 +1,25 @@
 # :first_in sets how long it takes before the job is first run. In this case, it is run immediately
 gmake_start = 1
 ea_start = 1
+gmake_progress = 0
+ea_progress = 0
+
+st = Time.now.to_i
+send_event('build_elapsed', {start_time: st})
+
 SCHEDULER.every '2s', :first_in => 0 do |job|
   send_event('gmake_build_count', { current: gmake_start += rand(10) })
   send_event('ea_build_count', { current: ea_start += rand(50) })
   send_event('gmake_build_rate', { value: rand(20) })
   send_event('ea_build_rate', { value: rand(50) })
+  send_event('gmake_progress', {progress_items: [
+    {name: "Current GMake build", progress: gmake_progress}
+    ]})
+  send_event('ea_progress', {progress_items: [
+        {name: "Current EA build", progress: ea_progress}
+                                              ]})
+  gmake_progress += 1
+  ea_progress += 2
   send_event('gmake_last_builds', {
               points: [
                 {"x" => 0, "y" => 100},

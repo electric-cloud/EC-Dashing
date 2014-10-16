@@ -2,6 +2,10 @@
     background-color: #aaaaaa;
 }
 
+.progress {
+    background-color: #cccccc;
+}
+
 .gmake-bg {
     background-color: #00a99d;
 }
@@ -26,4 +30,22 @@
     background-color: #01b4ec;   
 }
 
+.inline-elapsed {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: right;
+    clear: both;
+}
 
+.inline-elapsed-label {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    clear: both;
+}
+
+.elapsed-row {
+    width: 300px;
+    margin: auto;
+}

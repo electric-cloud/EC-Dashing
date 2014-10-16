@@ -1,3 +1,9 @@
-<h1 class="title" data-bind="title"></h1>
-<span data-bind="text"></span>&nbsp;<span data-bind="init-date-time"></span>
-<h2 data-bind="elapsed-time"></h2>
+<div class="title" data-bind="title"></div>
+<div class="elapsed-row">
+    <div class="inline-elapsed-label" data-bind="text"></div>
+    <div class="inline-elapsed" data-bind="init-date-time"></div>
+</div>
+<div class="elapsed-row">
+    <div class="inline-elapsed-label" data-bind="title"></div>
+    <div class="inline-elapsed" data-bind="elapsed-time"></div>    
+</div>

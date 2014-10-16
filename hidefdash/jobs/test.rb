@@ -3,8 +3,9 @@ prog_val1 = 0
 prog_val2 = 0
 prog_val3 = 0
 
+send_event('test-elapsed1', {start_time: st})
+
 SCHEDULER.every '2s' do  
-  send_event('test-elapsed1', {start_time: st})
   send_event('test-prog1', {progress_items: [{name: 'Universe entropy', progress: prog_val1},
                                              {name: 'My coffee pot', progress: prog_val2},
                                              {name: 'My attention span', progress: prog_val3}]})
