@@ -8,6 +8,7 @@ st = Time.now.to_i
 send_event('build_elapsed', {start_time: st})
 
 SCHEDULER.every '2s', :first_in => 0 do |job|
+=begin
   send_event('gmake_build_count', { current: gmake_start += rand(10) })
   send_event('ea_build_count', { current: ea_start += rand(50) })
   send_event('gmake_build_rate', { value: rand(20) })
@@ -46,4 +47,5 @@ SCHEDULER.every '2s', :first_in => 0 do |job|
                 {"x" => 8, "y" => 22 },
                 {"x" => 9, "y" => 5 }
                ]})
+=end
 end

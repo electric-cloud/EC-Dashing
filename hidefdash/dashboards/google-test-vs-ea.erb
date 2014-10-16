@@ -1,31 +1,40 @@
 <link rel="stylesheet" href="/assets/ec.css">
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="12" data-sizey="2">
-        <div data-id="test_elapsed" data-title="Elapsed Time" data-text="Started at" data-view="Elapsed"></div>
+    <li data-row="1" data-col="1" data-sizex="6" data-sizey="1">
+        <div data-id="test_elapsed" data-title="Elapsed Time" data-text="Started at" data-view="Elapsed" class="elapsed"></div>
     </li>
     <li data-row="1" data-col="1" data-sizex="6" data-sizey="1">
+      <div data-id="gmake" data-title="" data-text="" data-view="Text" class="elapsed"></div>
+    </li>    
+    <li data-row="2" data-col="1" data-sizex="6" data-sizey="1">
       <div data-id="gmake" data-title="Google Tests" data-text="" data-view="Text" class="gmake-bg"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="6" data-sizey="1">
+    <li data-row="2" data-col="1" data-sizex="6" data-sizey="1">
       <div data-id="ea" data-title="Google Tests + Accelerator" data-text="" data-view="Text" class="ea-bg"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="3" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="6" data-sizey="1">
+      <div data-id="google_test_progress" data-title="" data-view="ProgressBars" class="gmake-bg"></div>
+    </li>
+    <li data-row="3" data-col="1" data-sizex="6" data-sizey="1">
+      <div data-id="ea_test_progress" data-title="" data-view="ProgressBars" class="ea-bg"></div>
+    </li>
+    <li data-row="3" data-col="1" data-sizex="3" data-sizey="2">
       <div data-id="google_test_count" data-title="Completed Tests" data-view="Number" class="google-test"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="3" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="3" data-sizey="2">
       <div data-id="google_test_rate" data-view="Meter" data-title="Avg. Tests / Minute" data-min="0" data-max="15" class="google-test"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="3" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="3" data-sizey="2">
       <div data-id="ea_test_count" data-title="Completed Tests" data-view="Number" class="ea-test"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="3" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="3" data-sizey="2">
       <div data-id="ea_test_rate" data-view="Meter" data-title="Avg. Tests / Minute" data-min="0" data-max="15" class="ea-test"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="6" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="6" data-sizey="2">
       <div data-id="google_last_tests" data-title="Last 10 test times" data-color="#000" data-max="50" data-view="Graph" data-graphtype="bar" class="google-test"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="6" data-sizey="2">
+    <li data-row="3" data-col="1" data-sizex="6" data-sizey="2">
       <div data-id="ea_last_tests" data-title="Last 10 test times" data-color="#000" data-max="50" data-view="Graph" data-graphtype="bar" class="ea-test"></div>
     </li>
   </ul>
