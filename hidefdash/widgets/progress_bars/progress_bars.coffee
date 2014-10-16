@@ -112,6 +112,11 @@ class Dashing.ProgressBars extends Dashing.Widget
   # @baseDuration - the minimum time the animation will perform.
   # /
   animateProgressBarContent: (element, from, to, baseDuration) ->
+    
+    if to >= 98
+      setProgressBarValue(element, to)
+      return
+    
     endpointDifference = (to-from)
 
     if endpointDifference != 0
