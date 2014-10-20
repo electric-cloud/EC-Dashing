@@ -29,14 +29,16 @@ class Dashing.ProgressBars extends Dashing.Widget
         if existingRow.length
           if referenceRow.attr("class").indexOf(normalizedItemName) == -1
             existingRow.detach().insertBefore(referenceRow)
-            existingRow.hide().fadeIn(1200)
+            #existingRow.hide().fadeIn(1200)
+            existingRow.hide().fadeIn(1)
         else
           row = createRow(item)
           if referenceRow.length
             row.insertBefore(referenceRow)
           else
             rowsContainer.append(row)
-          row.hide().fadeIn(1200)
+          #row.hide().fadeIn(1200)
+          row.hide().fadeIn(1)
 
         elem = rowsContainer.find("."+normalizedItemName+" .inner-progress-bar")
         if elem.length
@@ -49,7 +51,8 @@ class Dashing.ProgressBars extends Dashing.Widget
       currentNode = rowsContainer.children().eq(counter-1)
       while currentNode.next().length
         currentNode = currentNode.next()
-        currentNode.fadeOut(100, -> $(this).remove() )
+        #currentNode.fadeOut(100, -> $(this).remove() )
+        currentNode.fadeOut(1, -> $(this).remove() )
 
       # Set the height after rows were added/removed.
       rows = rowsContainer.children()
