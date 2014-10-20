@@ -43,7 +43,7 @@ class Dashing.ProgressBars extends Dashing.Widget
         elem = rowsContainer.find("."+normalizedItemName+" .inner-progress-bar")
         if elem.length
           @animateProgressBarContent(elem[0], parseFloat(elem[0].style.width),
-                                    parseFloat(item.progress), 1000)
+                                    parseFloat(item.progress), 10)
         ++counter
 
       # Remove any nodes that were not in the new data, these will be the rows
@@ -116,11 +116,12 @@ class Dashing.ProgressBars extends Dashing.Widget
   # /
   animateProgressBarContent: (element, from, to, baseDuration) ->
     
-    if to >= 98
-      setProgressBarValue(element, to)
+    if to == 0
+      setProgressBarValue(element, 100)
       return
     
-    endpointDifference = (to-from)
+    #endpointDifference = (to-from)
+    endpointDifference = 100
 
     if endpointDifference != 0
       currentValue = from
@@ -129,7 +130,10 @@ class Dashing.ProgressBars extends Dashing.Widget
       stepInterval = 16.667
 
       # Change the duration based on the distance between points.
-      duration = baseDuration + Math.abs(endpointDifference) * 25
+      #duration = baseDuration + Math.abs(endpointDifference) * 25
+    
+      # Now "to" is actually duration of the build
+      duration = to
 
       numberOfSteps = duration / stepInterval
       valueIncrement = endpointDifference / numberOfSteps
