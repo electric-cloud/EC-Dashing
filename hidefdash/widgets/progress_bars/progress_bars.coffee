@@ -43,7 +43,7 @@ class Dashing.ProgressBars extends Dashing.Widget
         elem = rowsContainer.find("."+normalizedItemName+" .inner-progress-bar")
         if elem.length
           @animateProgressBarContent(elem[0], parseFloat(elem[0].style.width),
-                                    parseFloat(item.progress), 10)
+                                    parseFloat(item.progress), 1000)
         ++counter
 
       # Remove any nodes that were not in the new data, these will be the rows

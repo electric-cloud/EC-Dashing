@@ -10,7 +10,9 @@ send_event('build_elapsed', {start_time: st})
 SCHEDULER.every '2s', :first_in => 0 do |job|
 =begin
   send_event('gmake_build_count', { current: gmake_start += rand(10) })
+  send_event('gmake_build_cost', { current: rand(100) })
   send_event('ea_build_count', { current: ea_start += rand(50) })
+  send_event('ea_build_cost', { current: rand(50) })
   send_event('gmake_build_rate', { value: rand(20) })
   send_event('ea_build_rate', { value: rand(50) })
   send_event('gmake_progress', {progress_items: [
