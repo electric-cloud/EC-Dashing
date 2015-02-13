@@ -8,7 +8,6 @@ require 'pp'
 
 points = []
 
-# TODO: Use these in the req variable
 board_id = '504' # The ID number of the Agile Board you wish to monitor
 wip_status = 'In Progress'
 
