@@ -35,8 +35,12 @@ apt-get install nodejs -y
 
 apt-get -y install curl
 # Install RVM and latest ruby
+# Warning, RVM 1.26.0 introduces signed releases and automated check of signatures when GPG software found.
+# Assuming you trust Michal Papis import the mpapis public key (downloading the signatures).
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable --ruby
-echo 'source /home/vagrant/.rvm/scripts/rvm' > /home/vagrant/.bash_aliases
+echo '/usr/local/rvm/scripts/rvm' > /home/vagrant/.bash_aliases
+source /usr/local/rvm/scripts/rvm > /dev/null 2>&1
 
 # Following the instructions on http://shopify.github.io/dashing/
 gem install dashing
